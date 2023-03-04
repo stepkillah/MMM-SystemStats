@@ -102,7 +102,7 @@ Module.register('MMM-SystemStats', {
       },
       freeSpace: {
         text: 'DISK_FREE',
-        icon: 'fa-hdd-o',
+        icon: 'fa-hdd',
       },
     };
 
