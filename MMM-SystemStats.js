@@ -70,7 +70,7 @@ Module.register('MMM-SystemStats', {
         }
       }
       this.stats.sysLoad = payload.sysLoad[0];
-      this.stats.freeMem = Number(payload.freeMem).toFixed() + '%';
+      this.stats.freeMem = Number(payload.freeMem.replace(',','.')).toFixed(2) + '%';
       upTime = parseInt(payload.upTime[0]);
       this.stats.upTime = moment.duration(upTime, "seconds").humanize();
       this.stats.freeSpace = payload.freeSpace;
@@ -86,11 +86,11 @@ Module.register('MMM-SystemStats', {
     var sysData = {
       cpuTemp: {
         text: 'CPU_TEMP',
-        icon: 'fa-thermometer',
+        icon: 'fa-thermometer-half',
       },
       sysLoad: {
         text: 'SYS_LOAD',
-        icon: 'fa-tachometer',
+        icon: 'fa-tachometer-alt',
       },
       freeMem: {
         text: 'RAM_FREE',
@@ -98,7 +98,7 @@ Module.register('MMM-SystemStats', {
       },
       upTime: {
         text: 'UPTIME',
-        icon: 'fa-clock-o',
+        icon: 'fa-clock',
       },
       freeSpace: {
         text: 'DISK_FREE',
@@ -119,14 +119,14 @@ Module.register('MMM-SystemStats', {
 
       if (self.config.label.match(/^(icon|textAndIcon)$/)) {
         var c2 = document.createElement('td');
-        c2.innerHTML = `<i class="fa ${sysData[item].icon} fa-fw"></i>`;
+        c2.innerHTML = `<i class="fas ${sysData[item].icon} fa-fw"></i>`;
         row.appendChild(c2);
       }
 
       var c3 = document.createElement('td');
       c3.setAttribute('class', 'value');
       c3.style.textAlign = self.config.align;
-      c3.innerText = self.stats[item];
+      c3.innerHTML = self.stats[item];
       row.appendChild(c3);
 
       wrapper.appendChild(row);
