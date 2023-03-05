@@ -35,7 +35,9 @@ Module.register('MMM-SystemStats', {
       'en': 'translations/en.json',
       'fr': 'translations/fr.json',
       'id': 'translations/id.json',
-      'de': 'translations/de.json'
+      'de': 'translations/de.json',
+      'ru': 'translations/ru.json',
+      'uk': 'translations/uk.json'
     };
 	},
 
